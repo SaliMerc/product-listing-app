@@ -4,7 +4,7 @@ export default function CustomButton({ onPressAction, title, color, accessibilit
   return (
     <Button
       onPress={onPressAction}
-      title={title || "Learn More"}
+      title={title || "Sign in"}
       color={color || "#841584"}
       accessibilityLabel={accessibilityLabel || "Learn more about this purple button"}
     />

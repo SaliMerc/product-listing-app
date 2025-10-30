@@ -1,32 +1,61 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from 'react';
+import {View, FlatList, StyleSheet, Text} from 'react-native';
 
-import Button from "../components/Button";
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Items',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
+];
 
-export default function App() {
-  return (
-    <View style={styles.content}>
-      <Text style={styles.title}>Hello React Native!</Text>
-      <Button
-      title='View more'
+
+const Item = ({title}) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+const App = () => (
+    <View style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem={({item}) => <Item title={item.title} />}
+        keyExtractor={item => item.id}
       />
+      <Text>
+        hello
+        <Text style={styles.textcontent}>world</Text>
+        </Text>
     </View>
-  );
-}
+);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#",
+    marginBottom: 50,
+    marginHorizontal: 16,
   },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
   },
   title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    marginBottom: 20,
+    fontSize: 32,
+  },
+  textcontent: {
+    fontSize: 20,
+    color: 'blue',
   },
 });
+
+export default App;
